@@ -89,7 +89,7 @@ def main():
     st_index, st_model = create_sentence_transformer_index(contexts, gte_model)
 
     # 示例问题
-    question = "What is the definition of biosafety?"
+    question = "烘干房后人员_车辆烘干_种猪场生物安全管理"
 
     # 检索文档
     retrieved_docs = retrieve_documents(question, bm25_index, st_index, bm25_vectorizer, st_model)
