@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("model/gte-Qwen2-7B-instruct", trust_remote_code=True)
+model = SentenceTransformer("Alibaba-NLP/gte-Qwen2-7B-instruct", cache_folder=r'../model/gte-Qwen2-7B-instruct')
 
 sentences = [
     "That is a happy person",
