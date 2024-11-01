@@ -1,5 +1,5 @@
 import torch
-from transformers import AutoTokenizer, AutoModelForQuestionAnswering, pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from datasets import load_dataset
 import faiss
 import numpy as np
@@ -71,13 +71,15 @@ def generate_answer(question, documents, qa_pipeline):
 # 主函数
 def main():
     # 加载模型
-    gte_model = SentenceTransformer('model/...')  # 粗排encoder
-    bge_model = SentenceTransformer('models/...')  # 精排encoder
+    gte_model = SentenceTransformer("../model/gte-Qwen2-7B-instruct", trust_remote_code=True)  # 粗排encoder
+    bge_model = SentenceTransformer('../models/bge-m3')  # 精排encoder
 
-    # 问答基座
-    qa_model = AutoModelForQuestionAnswering.from_pretrained('models/...')
-    qa_tokenizer = AutoTokenizer.from_pretrained('models/....')
-    qa_pipeline = pipeline("question-answering", model=qa_model, tokenizer=qa_tokenizer)
+    # 加载千问7B模型
+    model_name = "../model/qwen-7b"
+    qa_tokenizer = AutoTokenizer.from_pretrained(model_name)
+    qa_model = AutoModelForCausalLM.from_pretrained(model_name)
+    # 创建生成管道
+    qa_pipeline = pipeline("text-generation", model=qa_model, tokenizer=qa_tokenizer)
 
     # 准备数据
     contexts = prepare_data()
