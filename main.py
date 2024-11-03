@@ -6,7 +6,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 # # 设置环境变量以强制离线模式
 # os.environ['TRANSFORMERS_OFFLINE'] = '1'
 
-bge_model = SentenceTransformer('../model/models--BAAI--bge-m3/snapshots/test')  # 精排encoder
+bge_model = SentenceTransformer('/app/model')  # 精排encoder
 # bge_model = SentenceTransformer('BAAI/bge-m3', cache_folder=r'../model')
 sentences = [
     "That is a happy person",
