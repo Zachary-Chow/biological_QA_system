@@ -124,6 +124,8 @@ def main():
     qa_model = AutoModelForCausalLM.from_pretrained(model_name)
     # 创建生成管道
     qa_pipeline = pipeline("text-generation", model=qa_model, tokenizer=qa_tokenizer)
+    # 修改max_length
+    qa_pipeline.model.generation_config.max_length = 2000
     # qa_pipeline = pipeline("text-generation", model="../model/Qwen-0.5b")
 
     # 准备数据
