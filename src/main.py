@@ -36,7 +36,7 @@ def create_sentence_transformer_index(contexts, gte_model):
 
 
 # 检索函数
-def retrieve_documents(query, bm25_index, st_index, bm25_vectorizer, st_model, top_k=5):
+def retrieve_documents(query, bm25_index, st_index, bm25_vectorizer, st_model, top_k=30):
     # BM25检索
     query_vec = bm25_vectorizer.transform([query])
     faiss.normalize_L2(query_vec.toarray())
