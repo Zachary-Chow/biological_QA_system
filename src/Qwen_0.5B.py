@@ -2,7 +2,7 @@
 from transformers import pipeline
 
 messages = [
-    {"role": "user", "content": "Who are you?"},
+    {"role": "user", "content": "Who are you? you speak chinese and only response one sentence"},
 ]
 pipe = pipeline("text-generation", model="../model/Qwen-0.5b")
 
