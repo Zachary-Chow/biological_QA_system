@@ -1,9 +1,5 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
-from datasets import load_dataset
-import faiss
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer
 import pandas as pd
 from gensim.corpora import Dictionary
